@@ -20,6 +20,7 @@ const SwichtSchema = z.object({
   imgs: z.array(z.string()).min(1)
 })
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const validateSwich = (input: any) => {
   const resultValidate = SwichtSchema.safeParse(input)
   return resultValidate
