@@ -1,6 +1,9 @@
 GET http://localhost:3000
 
 ###
+GET http://localhost:3000/products
+
+###
 POST  http://localhost:3000/products
 Content-Type: application/json
 
@@ -8,7 +11,7 @@ Content-Type: application/json
   "name": "suiche elevavidrio pricipal",
   "position": "CENTER",
   "numberSwichs": 4,
-  "partNumber":["9005042", "9005041"],
+  "partNumber":["1","2"],
   "url": "https://es.aliexpress.com/item/1005005448993916.html",
   "store": "FuChoo Autoparts Store",
   "idStore": "1213253",
@@ -18,7 +21,7 @@ Content-Type: application/json
   "tag": ["interruptores", "swich", "suiches", "botones", "vidrios"],
   "description": "Interruptor de repuesto de Control de ventana principal eléctrica para Chevrolet Sail, alta calidad, 2010-2014",
   "model": ["sail"],
-  "modelYear": ["2011","2012","2013","2014"],
+  "modelYear": [1990, 2000, 2025],
   "price": 40983.66,
   "quantity": 2,
   "imgs": ["https://ae01.alicdn.com/kf/Sa550db65691f45cab65e3cb6fce40c2bX/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/Sa0be6317ecb04efe948ffed38aa17262B/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/Sa0be6317ecb04efe948ffed38aa17262B/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/Sc5391b7fcac942cb921a3dd86f6e15b6Q/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/S2a026f4d66934737b51942a63eadeed9V/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/S76704bfa82794845b3bbf9c53691b89af/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp", "https://ae01.alicdn.com/kf/Sf05808ee82fe4e7db092cc392648c8fbv/Interruptor-de-repuesto-de-Control-de-ventana-principal-el-ctrica-para-Chevrolet-Sail-alta-calidad-2010.jpg_220x220.jpg_.webp"]
