@@ -1,11 +1,10 @@
 import { Router } from 'express'
 import { validateSwich } from '../schemas/product'
 import { ResponseProducts } from '../types'
-import { PositionSwich } from '../utilsEnums'
-import { randomUUID } from 'node:crypto'
+
+import { ProductModel } from '../models/product'
 
 const data: ResponseProducts = require('../mocks/data.json')
-const { products } = data
 
 export const productsRouter = Router()
 
@@ -13,17 +12,16 @@ productsRouter.get('/', (_, res) => {
   res.json(data)
 })
 
-productsRouter.post('/', (req, res) => {
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+productsRouter.post('/', async (req, res) => {
   const dataProduct = req.body
   const result = validateSwich(dataProduct)
 
   if (!result.success) return res.status(400).json(JSON.parse(result.error.message))
 
-  const newProduct = {
-    ...result.data,
-    id: randomUUID(),
-    position: PositionSwich[result.data.position]
-  }
-  products.push(newProduct)
-  res.status(201).json(newProduct)
+  const resultModel = await ProductModel.create(result.data)
+
+  if (!resultModel.success) return res.status(404).json(resultModel.error)
+
+  res.status(201).json(resultModel.data)
 })

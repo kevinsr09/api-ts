@@ -8,7 +8,7 @@ POST  http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "name": "suiche elevavidrio pricipal",
+  "name": "suiche elevavidrio pricipal l",
   "position": "CENTER",
   "numberSwichs": 4,
   "partNumber":["1","2"],
