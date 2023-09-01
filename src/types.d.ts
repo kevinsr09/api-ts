@@ -4,6 +4,10 @@ export interface ResponseProducts {
   products: Product[]
   success: BoleanString
 }
+export interface ResponseProduct {
+  products: ProductSwitch
+  success: BoleanString
+}
 
 export type ProductID = `${string}-${string}-${string}-${string}-${string}`
 
@@ -12,11 +16,11 @@ export interface Product {
   name: string
   position: PositionSwich
   numberSwichs: number
-  partNumber: string[]
-  url: string
-  store: string
+  referencePart: string[]
+  urlStore: string
+  nameStore: string
   idStore: string
-  genuine: tBoleanString
+  genuine: BoleanString
   category: string
   pinOut: string
   tag?: string[] | undefined
@@ -24,6 +28,14 @@ export interface Product {
   model: string[]
   modelYear: number[]
   price: number
-  quantity: number
+  stock: number
   imgs: string[]
+}
+
+export interface ProductSwitch extends Product {
+  position: PositionSwich
+  numberSwichs: number
+  pinOut: string
+  model: string[]
+  modelYear: number[]
 }
