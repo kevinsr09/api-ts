@@ -3,7 +3,7 @@ import { validateSwitch } from '../schemas/switch'
 import { ResponseProducts } from '../types'
 import { ProductModel } from '../models/product'
 
-const data: ResponseProducts = require('../mocks/data.json')
+const data: ResponseProducts = require('../mocks/all_products.json')
 
 export const productsRouter = Router()
 
@@ -16,7 +16,7 @@ productsRouter.get('/:id', (_, res) => {
 })
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-productsRouter.post('/', async (req, res) => {
+productsRouter.post('/switch', async (req, res) => {
   const dataProduct = req.body
   const result = validateSwitch(dataProduct)
 

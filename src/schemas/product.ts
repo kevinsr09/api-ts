@@ -1,7 +1,7 @@
 import z from 'zod'
 
 export const ProductSchema = z.object({
-  name: z.string().min(5).max(40),
+  name: z.string().min(5).max(100),
   referencePart: z.array(z.string().nonempty()).min(1),
   urlStore: z.string().url(),
   nameStore: z.string().nonempty().max(50),

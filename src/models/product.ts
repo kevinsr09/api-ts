@@ -18,7 +18,9 @@ const resultModel = ({ message, success, data }: { message?: string, success: bo
 }
 
 const data: ResponseProducts = require('../mocks/data.json')
+const allProducts: ResponseProducts = require('../mocks/all_products.json')
 const { products } = data
+const { products: productsof } = allProducts
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class ProductModel {
@@ -32,7 +34,26 @@ export class ProductModel {
       ...dataProduct
     }
 
+    productsof.push({
+      id: newProduct.id,
+      name: newProduct.name,
+      referencePart: newProduct.referencePart,
+      urlStore: newProduct.urlStore,
+      nameStore: newProduct.nameStore,
+      idStore: newProduct.idStore,
+      genuine: newProduct.genuine,
+      category: newProduct.category,
+      description: newProduct.description,
+      price: newProduct.price,
+      stock: newProduct.stock,
+      imgs: newProduct.imgs
+    })
     products.push(newProduct)
+
+    console.log({
+      data: productsof,
+      allProducts: products
+    })
     return resultModel({ success: true, data: newProduct })
   }
 }

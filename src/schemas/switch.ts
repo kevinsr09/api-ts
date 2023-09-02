@@ -1,6 +1,6 @@
 import z from 'zod'
 
-import { ProductSchema } from './product1'
+import { ProductSchema } from './product'
 
 export const SwitchSchema = ProductSchema.extend({
   position: z.enum(['FL', 'FR', 'RR', 'RL', 'CENTER']),

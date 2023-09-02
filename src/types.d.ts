@@ -14,19 +14,14 @@ export type ProductID = `${string}-${string}-${string}-${string}-${string}`
 export interface Product {
   id: ProductID
   name: string
-  position: PositionSwich
-  numberSwichs: number
   referencePart: string[]
   urlStore: string
   nameStore: string
   idStore: string
   genuine: BoleanString
   category: string
-  pinOut: string
   tag?: string[] | undefined
   description: string
-  model: string[]
-  modelYear: number[]
   price: number
   stock: number
   imgs: string[]
