@@ -1,12 +1,12 @@
-export type BoleanString = 'true' | 'false'
+export type BooleanString = 'true' | 'false'
 
 export interface ResponseProducts {
   products: Product[]
-  success: BoleanString
+  success: BooleanString
 }
 export interface ResponseProduct {
   products: ProductSwitch
-  success: BoleanString
+  success: BooleanString
 }
 
 export type ProductID = `${string}-${string}-${string}-${string}-${string}`
@@ -18,7 +18,7 @@ export interface Product {
   urlStore: string
   nameStore: string
   idStore: string
-  genuine: BoleanString
+  genuine: BooleanString
   category: string
   tag?: string[] | undefined
   description: string
