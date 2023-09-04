@@ -8,7 +8,7 @@ POST  http://localhost:3000/products/switch
 Content-Type: application/json
 
 {
-  "name": "suiche elevavidrio pricipal l",
+  "name": "suiche elevavidrio pricipal x4 sail 13 pines",
   "position": "CENTER",
   "numberSwichs": 4,
   "referencePart":["1","2"],
@@ -17,7 +17,7 @@ Content-Type: application/json
   "idStore": "1213253",
   "genuine": "false",
   "category": "swich",
-  "pinOut": "11",
+  "pinOut": "13",
   "tag": ["interruptores", "swich", "suiches", "botones", "vidrios"],
   "description": "Interruptor de repuesto de Control de ventana principal eléctrica para Chevrolet Sail, alta calidad, 2010-2014",
   "model": ["sail"],
