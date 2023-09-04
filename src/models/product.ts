@@ -17,8 +17,8 @@ const resultModel = ({ message, success, data }: { message?: string, success: bo
   }
 }
 
-const data: ResponseProducts = require('../mocks/data.json')
-const allProducts: ResponseProducts = require('../mocks/all_products.json')
+const data: ResponseProducts = require('../mocks/products.json')
+const allProducts: ResponseProducts = require('../mocks/base_products.json')
 const { products } = data
 const { products: productsof } = allProducts
 
