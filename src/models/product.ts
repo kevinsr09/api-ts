@@ -1,4 +1,4 @@
-import { Product, ResponseProducts } from '../types'
+import { Product, ResponseProducts } from '../types/types'
 import { randomUUID } from 'node:crypto'
 
 const resultModel = ({ message, success, data }: { message?: string, success: boolean, data?: Product }) => {

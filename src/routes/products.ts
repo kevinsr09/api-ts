@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { validateSwitch } from '../schemas/switch'
-import { ResponseProducts } from '../types'
+import { validateSwitch } from '../schemas/car-parts/switch'
+import { ResponseProducts } from '../types/types'
 import { ProductModel } from '../models/product'
 
 const data: ResponseProducts = require('../mocks/all_products.json')
