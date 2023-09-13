@@ -7,7 +7,8 @@ export const SwitchSchema = ProductSchema.extend({
   numberSwichs: z.number().int().positive(),
   pinOut: z.string(),
   model: z.array(z.string().nonempty()).min(1),
-  modelYear: z.array(z.number().int().min(1990).max(2026)).min(1)
+  modelYear: z.array(z.number().int().min(1990).max(2026)).min(1),
+  genuine: z.enum(['true', 'false'])
 })
 
 export const validateSwitch = (input: any) => {

@@ -1,3 +1,5 @@
+import { POSITION_SWITCH } from '../utils/constants'
+
 export type BooleanString = 'true' | 'false'
 
 export interface ResponseProducts {
@@ -14,11 +16,9 @@ export type ProductID = `${string}-${string}-${string}-${string}-${string}`
 export interface Product {
   id: ProductID
   name: string
-  referencePart: string[]
-  urlStore: string
+  productID: string
+  purchaseLink: string
   nameStore: string
-  idStore: string
-  genuine: BooleanString
   category: string
   tag?: string[] | undefined
   description: string
@@ -28,7 +28,7 @@ export interface Product {
 }
 
 export interface ProductSwitch extends Product {
-  position: PositionSwich
+  position: POSITION_SWITCH
   numberSwichs: number
   pinOut: string
   model: string[]

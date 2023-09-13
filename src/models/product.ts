@@ -1,21 +1,6 @@
 import { Product, ResponseProducts } from '../types/types'
 import { randomUUID } from 'node:crypto'
-
-const resultModel = ({ message, success, data }: { message?: string, success: boolean, data?: Product }) => {
-  if (!success) {
-    return {
-      success,
-      error: {
-        message
-      }
-    }
-  }
-
-  return {
-    success,
-    data
-  }
-}
+import { resultModel } from '../utils/utils'
 
 const data: ResponseProducts = require('../mocks/products.json')
 const allProducts: ResponseProducts = require('../mocks/base_products.json')
@@ -35,13 +20,11 @@ export class ProductModel {
     }
 
     productsof.push({
-      id: newProduct.id,
+      id: randomUUID(),
       name: newProduct.name,
-      referencePart: newProduct.referencePart,
-      urlStore: newProduct.urlStore,
+      productID: newProduct.id,
+      purchaseLink: newProduct.purchaseLink,
       nameStore: newProduct.nameStore,
-      idStore: newProduct.idStore,
-      genuine: newProduct.genuine,
       category: newProduct.category,
       description: newProduct.description,
       price: newProduct.price,

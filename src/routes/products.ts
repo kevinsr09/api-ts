@@ -1,9 +1,6 @@
 import { Router } from 'express'
-import { validateSwitch } from '../schemas/car-parts/switch'
 import { ResponseProducts } from '../types/types'
-import { ProductModel } from '../models/product'
-
-const data: ResponseProducts = require('../mocks/all_products.json')
+const data: ResponseProducts = require('../mocks/product.json')
 
 export const productsRouter = Router()
 
@@ -15,8 +12,9 @@ productsRouter.get('/:id', (_, res) => {
   res.json(data)
 })
 
+/*
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-productsRouter.post('/switch', async (req, res) => {
+productsRouter.post('/', async (req, res) => {
   const dataProduct = req.body
   const result = validateSwitch(dataProduct)
 
@@ -28,3 +26,5 @@ productsRouter.post('/switch', async (req, res) => {
 
   res.status(201).json(resultModel.data)
 })
+
+*/
