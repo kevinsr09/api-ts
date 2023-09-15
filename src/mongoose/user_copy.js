@@ -25,8 +25,10 @@ const UserSchemaMongoose = new Schema({
   methods: {
     comparePassword: async function (password) {
       const result = await bcrypt.compare(password, this.password)
+      console.log(this.password)
       return result
     }
+
   }
 })
 
@@ -39,19 +41,29 @@ UserSchemaMongoose.pre('save', async function (next) {
     console.log(err)
   }
 })
+UserSchemaMongoose.set('toJSON', {
+  transform: function (doc, ret) {
+    ret.id = ret._id
+    delete ret._id
+    delete ret.__v
+  }
+})
 
 const UserModelMongoose = model('User', UserSchemaMongoose)
 
-const newUser = new UserModelMongoose({
-  userName: 'kevin',
-  email: 'kevinrugeles',
-  password: '12345'
-})
+UserModelMongoose.findOne({ userName: 'kevin3' }).then(result => console.log(result))
 
-newUser.save()
-  .then((result) => {
-    console.log(result)
-  })
-  .catch(error => {
-    console.log(error)
-  })
+// const newUser = new UserModelMongoose({
+//   userName: 'kevin3',
+//   email: 'kevinrugeles3',
+//   password: '12345'
+// })
+
+// newUser.save()
+//   .then((result) => {
+//     console.log(result)
+//     mongoose.connection.close()
+//   })
+//   .catch(error => {
+//     console.log(error)
+//   })

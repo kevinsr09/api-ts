@@ -26,6 +26,13 @@ const UserSchemaMongoose = new Schema({
       const result: Boolean = await bcrypt.compare(password, this.password)
       return result
     }
+  },
+  toJSON: {
+    transform: function (_, ret) {
+      ret.id = ret._id
+      delete ret._id
+      delete ret.__v
+    }
   }
 })
 
