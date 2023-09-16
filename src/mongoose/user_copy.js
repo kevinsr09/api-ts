@@ -28,7 +28,13 @@ const UserSchemaMongoose = new Schema({
       console.log(this.password)
       return result
     }
-
+  },
+  toJSON: {
+    transform: function (_, ret) {
+      ret.id = ret._id
+      delete ret._id
+      delete ret.__v
+    }
   }
 })
 
@@ -41,21 +47,21 @@ UserSchemaMongoose.pre('save', async function (next) {
     console.log(err)
   }
 })
-UserSchemaMongoose.set('toJSON', {
-  transform: function (doc, ret) {
-    ret.id = ret._id
-    delete ret._id
-    delete ret.__v
-  }
-})
 
-const UserModelMongoose = model('User', UserSchemaMongoose)
+export const UserModelMongoose = model('User', UserSchemaMongoose)
 
-UserModelMongoose.findOne({ userName: 'kevin3' }).then(result => console.log(result))
+// ;(
+//   async () => {
+//     const user = await UserModelMongoose.findOne({ _id: '65046c93728ca0c4454c1bf1' })
+//     console.log(user.toJSON())
+//     console.log(user.id)
+//     mongoose.connection.close()
+//   }
+// )()
 
 // const newUser = new UserModelMongoose({
-//   userName: 'kevin3',
-//   email: 'kevinrugeles3',
+//   userName: 'kevin4',
+//   email: 'kevinrugeles4',
 //   password: '12345'
 // })
 

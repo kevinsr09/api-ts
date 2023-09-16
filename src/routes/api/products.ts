@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { ResponseProducts } from '../types/types'
-const data: ResponseProducts = require('../mocks/product.json')
+import { ResponseProducts } from '../../types/types'
+const data: ResponseProducts = require('../../mocks/products.json')
 
 export const productsRouter = Router()
 

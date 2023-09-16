@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 const bcrypt = require('bcryptjs')
-require('../connection/mongoose')
+
 const UserSchemaMongoose = new Schema({
   userName: {
     type: String,
@@ -47,17 +47,3 @@ UserSchemaMongoose.pre('save', async function (next) {
 })
 
 export const UserModelMongoose = model('User', UserSchemaMongoose)
-
-const newUser = new UserModelMongoose({
-  userName: 'kevin',
-  email: 'kevinrugeles',
-  password: '12345'
-})
-
-newUser.save()
-  .then((result) => {
-    console.log(result)
-  })
-  .catch(error => {
-    console.log(error)
-  })
