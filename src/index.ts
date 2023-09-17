@@ -1,6 +1,5 @@
 import express from 'express'
-import { apiRouter } from './routes/api/api'
-
+import { apiRouter } from './routes/api'
 require('./connection/mongoose')
 
 const app = express()

@@ -3,7 +3,7 @@ import { IUserRepository } from '../domain/interfaces/user.interface'
 import { User } from '../domain/user'
 
 export class UserRepositoryMongoose implements IUserRepository {
-  public async addUser (user: User): Promise<User | null> {
+  public async addUser (user: User): Promise<Omit<User, 'password' | 'id'> | null> {
     const userModelMongoose = new UserModelMongoose(user)
     let userMongoose
     try {
@@ -13,16 +13,11 @@ export class UserRepositoryMongoose implements IUserRepository {
         console.log(err)
         return null
       }
-      console.log(userMongoose)
-      const userMongooseToJSON = await userMongoose.toJSON()
-      console.log(userMongooseToJSON)
-      if (userMongooseToJSON.userName == null || userMongooseToJSON.email == null || userMongooseToJSON.password == null) throw new Error('error')
+      if (userMongoose.userName == null || userMongoose.email == null || userMongoose.password == null) throw new Error('error')
       return {
-        id: userMongoose.id,
-        userName: userMongooseToJSON.userName,
-        email: userMongooseToJSON.email,
-        password: userMongooseToJSON.password,
-        createAt: userMongooseToJSON.createAt
+        userName: userMongoose.userName,
+        email: userMongoose.email,
+        createAt: userMongoose.createAt
       }
     } catch (err) {
       console.log(err)

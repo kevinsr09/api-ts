@@ -1,12 +1,9 @@
 import { Router } from 'express'
-import { productsRouter } from './products'
-import { userController } from '../../users/infrastructure/dependences'
 
-export const apiRouter = Router()
+export const userRouter = Router()
 
-apiRouter.use('/products', productsRouter)
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-apiRouter.use('/users', userController.addUser.bind(userController))
+// userRouter.get('/:id', (_, res) => {
+// })
 
 /*
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

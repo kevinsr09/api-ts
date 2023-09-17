@@ -1,5 +1,5 @@
 // import { Schema, model } from 'mongoose'
-const { Schema, model } = require('mongoose')
+const { Schema, model, default: mongoose } = require('mongoose')
 const bcrypt = require('bcryptjs')
 require('../connection/mongoose_copy')
 const UserSchemaMongoose = new Schema({
@@ -30,10 +30,17 @@ const UserSchemaMongoose = new Schema({
     }
   },
   toJSON: {
+    virtuals: true,
     transform: function (_, ret) {
-      ret.id = ret._id
       delete ret._id
       delete ret.__v
+    }
+  },
+  virtuals: {
+    id: {
+      get () {
+        return this._id
+      }
     }
   }
 })
@@ -48,16 +55,16 @@ UserSchemaMongoose.pre('save', async function (next) {
   }
 })
 
-export const UserModelMongoose = model('User', UserSchemaMongoose)
+const UserModelMongoose = model('User', UserSchemaMongoose)
 
-// ;(
-//   async () => {
-//     const user = await UserModelMongoose.findOne({ _id: '65046c93728ca0c4454c1bf1' })
-//     console.log(user.toJSON())
-//     console.log(user.id)
-//     mongoose.connection.close()
-//   }
-// )()
+;(
+  async () => {
+    const user = await UserModelMongoose.findOne({ _id: '65046c93728ca0c4454c1bf1' })
+    console.log(user.toJSON())
+    console.log(user.id)
+    mongoose.connection.close()
+  }
+)()
 
 // const newUser = new UserModelMongoose({
 //   userName: 'kevin4',

@@ -28,10 +28,17 @@ const UserSchemaMongoose = new Schema({
     }
   },
   toJSON: {
+    virtuals: true,
     transform: function (_, ret) {
-      ret.id = ret._id
       delete ret._id
       delete ret.__v
+    }
+  },
+  virtuals: {
+    id: {
+      get () {
+        return this._id
+      }
     }
   }
 })
