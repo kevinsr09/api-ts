@@ -1,11 +1,12 @@
 import { Router } from 'express'
 import { productsRouter } from './products'
-import { userRouter } from './users'
+import { userController } from '../../users/infrastructure/dependences'
 
-export const apiv1Router = Router()
+export const apiRouter = Router()
 
-apiv1Router.use('/products', productsRouter)
-apiv1Router.use('/users', userRouter)
+apiRouter.use('/products', productsRouter)
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+apiRouter.use('/users', userController.addUser.bind(userController))
 
 /*
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

@@ -1,22 +1,46 @@
-import type { Request, Response } from 'express'
-import { UserValidator } from '../../schemas/user'
-import { UserRepositoryMongoose } from './user.repository'
-import { UserService } from '../application/user.service'
+import type { Request, Response, NextFunction } from 'express'
+
+import { UserService } from '../application/user.services'
 
 export class UserController {
-  private readonly userService: UserService
+  constructor (private readonly userService: UserService) {}
 
-  constructor () {
-    const userRepository = new UserRepositoryMongoose()
-    this.userService = new UserService(userRepository)
-  }
+  async addUser (req: Request, res: Response, _: NextFunction) {
+    const { userName, email, password } = req.body
 
-  async addUser (req: Request, res: Response) {
-    const data = req.body
+    console.log(userName, email, password)
 
-    const newUser = UserValidator(data)
-    if (!newUser.success) return res.status(400).json(JSON.stringify({ error: newUser.error }))
+    const newUser = await this.userService.addUser(userName, email, password)
+    if (newUser == null) return res.status(400).json({ error: 'error' })
 
-    return await this.userService.addUser(...newUser.data)
+    res.json(newUser).end()
   }
 }
+
+// export const userRouter = Router()
+
+// userRouter.post('/', (req: Request, res: Response) => {
+//   const { userName, email, password } = req.body
+
+//   const newUser = new UserService()
+//   res.json({ succes: 'succes' })
+// })
+
+// export class UserController {
+//   private readonly userService: UserService
+
+//   constructor () {
+//     const userRepository = new UserRepositoryMongoose()
+//     this.userService = new UserService(userRepository)
+//   }
+
+//   async addUser (req: Request, res: Response) {
+//     const data = req.body
+
+//     const newUser = UserValidator(data)
+//     if (!newUser.success) return res.status(400).json(JSON.stringify({ error: newUser.error }))
+//     const dataUser = newUser.data
+
+//     return await this.userService.addUser()
+//   }
+// }

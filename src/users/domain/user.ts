@@ -1,4 +1,4 @@
 export class User {
-  constructor (readonly id: string, public userName: string, public email: string, public password: string, readonly date: Date) {
+  constructor (public readonly userName: string, public readonly email: string, public readonly password: string, public readonly id?: string, public readonly createAt?: Date) {
   }
 }

@@ -5,8 +5,8 @@ export class UserService {
   constructor (private readonly userRepository: IUserRepository) {
   }
 
-  public async addUser (id: string, userName: string, email: string, password: string, date: Date): Promise<User | null> {
-    const user = new User(id, userName, email, password, date)
+  public async addUser (userName: string, email: string, password: string): Promise<User | null> {
+    const user = new User(userName, email, password)
     return await this.userRepository.addUser(user)
   }
 }
