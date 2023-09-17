@@ -9,4 +9,8 @@ export class UserService {
     const user = new User(userName, email, password)
     return await this.userRepository.addUser(user)
   }
+
+  public async getUserByID (userID: string): Promise<User | null> {
+    return await this.getUserByID(userID)
+  }
 }

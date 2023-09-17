@@ -42,6 +42,11 @@ const UserSchemaMongoose = new Schema({
         return this._id
       }
     }
+  },
+  statics: {
+    findByID (id) {
+      return this.find({ _id: id })
+    }
   }
 })
 
@@ -55,16 +60,27 @@ UserSchemaMongoose.pre('save', async function (next) {
   }
 })
 
+UserSchemaMongoose.query.findByID = function (userID) {
+  return this.find({ _id: userID })
+}
+
 const UserModelMongoose = model('User', UserSchemaMongoose)
 
 ;(
   async () => {
-    const user = await UserModelMongoose.findOne({ _id: '65046c93728ca0c4454c1bf1' })
-    console.log(user.toJSON())
-    console.log(user.id)
+    const user = await UserModelMongoose.findByID('65046c93728ca0c4454c1bf1')
+    console.log(user)
     mongoose.connection.close()
   }
 )()
+// ;(
+//   async () => {
+//     const user = await UserModelMongoose.findOne({ _id: '65046c93728ca0c4454c1bf1' })
+//     console.log(user.toJSON())
+//     console.log(user.id)
+//     mongoose.connection.close()
+//   }
+// )()
 
 // const newUser = new UserModelMongoose({
 //   userName: 'kevin4',

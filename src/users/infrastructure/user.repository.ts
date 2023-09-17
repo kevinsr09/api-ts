@@ -24,4 +24,10 @@ export class UserRepositoryMongoose implements IUserRepository {
       return null
     }
   }
+
+  public async getUserByID (userID: string): Promise<User | null> {
+    const user = UserModelMongoose.findOne({ _id: userID }).lean() as infer
+    if (user == null) return null
+    
+  }
 }
