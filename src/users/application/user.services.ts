@@ -10,7 +10,7 @@ export class UserService {
     return await this.userRepository.addUser(user)
   }
 
-  public async getUserByID (userID: string): Promise<User | null> {
+  public async getUserByID (userID: string): Promise<Omit<User, 'password'> | null> {
     return await this.getUserByID(userID)
   }
 }

@@ -44,8 +44,10 @@ const UserSchemaMongoose = new Schema({
     }
   },
   statics: {
-    findByID (id) {
-      return this.find({ _id: id })
+    async findBYID (id) {
+      const uuser = await this.findById(id)
+      const uuuser = uuser?.toJSON()
+      return uuuser
     }
   }
 })
@@ -68,7 +70,7 @@ const UserModelMongoose = model('User', UserSchemaMongoose)
 
 ;(
   async () => {
-    const user = await UserModelMongoose.findByID('65046c93728ca0c4454c1bf1')
+    const user = await UserModelMongoose.findBYID('65046c93728ca0c4454c1bf1')
     console.log(user)
     mongoose.connection.close()
   }

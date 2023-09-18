@@ -40,6 +40,14 @@ const UserSchemaMongoose = new Schema({
         return this._id
       }
     }
+  },
+  statics: {
+    async findBYID (id) {
+      const uuser = await this.findById(id)
+      if (uuser == null) return null
+      const uuuser = uuser?.toJSON()
+      return uuuser
+    }
   }
 })
 
