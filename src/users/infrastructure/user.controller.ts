@@ -3,17 +3,26 @@ import type { Request, Response, NextFunction } from 'express'
 import { UserService } from '../application/user.services'
 
 export class UserController {
+  private readonly kevin = 'kevinR'
   constructor (private readonly userService: UserService) {}
 
   async addUser (req: Request, res: Response, _: NextFunction) {
     const { userName, email, password } = req.body
-
     console.log(userName, email, password)
 
     const newUser = await this.userService.addUser(userName, email, password)
     if (newUser == null) return res.status(400).json({ error: 'error' })
 
     res.json(newUser).end()
+  }
+
+  async getUserByID (req: Request, res: Response, _: NextFunction) {
+    const { userID } = req.params
+    console.log(userID)
+    if (typeof userID !== 'string') return res.status(400).json({ error: 'no ingresaste al usuario' })
+    const newUser = await this.userService.getUserByID(userID)
+    if (newUser == null) return res.status(400).json({ error: 'error' })
+    return res.json(newUser).end()
   }
 }
 

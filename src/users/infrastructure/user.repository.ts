@@ -25,8 +25,8 @@ export class UserRepositoryMongoose implements IUserRepository {
     }
   }
 
-  public async getUserByID (userID: string): Promise<Omit<User, 'password'> | null> {
-    const user = await UserModelMongoose.findBYID(userID)
+  public async getUserById (userID: string): Promise<Omit<User, 'password'> | null> {
+    const user = await UserModelMongoose.findById(userID)
     if (user == null) return null
     if (user.userName == null || user.email == null) return null
 

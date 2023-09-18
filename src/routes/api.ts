@@ -6,7 +6,9 @@ export const apiRouter = Router()
 
 apiRouter.use('/products', productsRouter)
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-apiRouter.use('/users', userController.addUser.bind(userController))
+apiRouter.get('/users/:userID', userController.getUserByID.bind(userController))
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+apiRouter.post('/users', userController.addUser.bind(userController))
 
 /*
 // eslint-disable-next-line @typescript-eslint/no-misused-promises

@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose'
-const bcrypt = require('bcryptjs')
+import bcrypt from 'bcryptjs'
 
 const UserSchemaMongoose = new Schema({
   userName: {
@@ -23,7 +23,9 @@ const UserSchemaMongoose = new Schema({
 }, {
   methods: {
     comparePassword: async function (password: string): Promise<Boolean> {
-      const result: Boolean = await bcrypt.compare(password, this.password)
+      if (password.length === 0) return false
+      if (this.password !== 'string') return false
+      const result = await bcrypt.compare(password, this.password)
       return result
     }
   },
@@ -40,19 +42,13 @@ const UserSchemaMongoose = new Schema({
         return this._id
       }
     }
-  },
-  statics: {
-    async findBYID (id) {
-      const uuser = await this.findById(id)
-      if (uuser == null) return null
-      const uuuser = uuser?.toJSON()
-      return uuuser
-    }
   }
 })
 
 UserSchemaMongoose.pre('save', async function (next) {
+  if (this.password !== 'string') return next()
   if (!this.isModified('password')) return next()
+
   try {
     const salt = await bcrypt.genSalt(10)
     this.password = await bcrypt.hash(this.password, salt)

@@ -11,6 +11,6 @@ export class UserService {
   }
 
   public async getUserByID (userID: string): Promise<Omit<User, 'password'> | null> {
-    return await this.getUserByID(userID)
+    return await this.userRepository.getUserById(userID)
   }
 }
