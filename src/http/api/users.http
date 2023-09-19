@@ -2,10 +2,10 @@ POST http://localhost:3000/api/v1/users
 Content-Type: application/json
 
 {
-  "userName": "kevin22",
-  "email": "kevinrugeles22",
+  "userName": "kevin25",
+  "email": "kevinrugeles25",
   "password": "12345" 
 }
 
 ###
-GET  http://localhost:3000/api/v1/users/650387cc84a55fa4f60b22bc
+GET  http://localhost:3000/api/v1/users/650694d037083d8373a5ca37

@@ -1,5 +1,6 @@
 import express from 'express'
 import { apiRouter } from './routes/api'
+import { mongoDatabase } from './connection/mongoose'
 require('./connection/mongoose')
 
 const app = express()
