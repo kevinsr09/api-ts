@@ -6,12 +6,14 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev src/index.ts",
-    "dev:1": "ts-node-dev src/app.ts"
+    "dev:1": "ts-node-dev src/app.ts",
+    "dev:2": "ts-node-dev src/users/presentation/mongoose-schemas/user.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@typegoose/typegoose": "^11.5.0",
     "@types/bcryptjs": "^2.4.4",
     "@types/node": "^20.6.2",
     "bcryptjs": "2.4.3",
