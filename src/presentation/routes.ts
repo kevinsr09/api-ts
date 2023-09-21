@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { UserRouter } from '../users/presentation/routes'
+import { UserRouter } from './user/routes'
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AppRouter {

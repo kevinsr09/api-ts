@@ -8,4 +8,15 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:3000/api/v1/users/65087d45fe11221c1b3e2001
+GET  http://localhost:3001/api/v1/users
+
+###
+POST  http://localhost:3001/api/v1/users
+Content-Type: application/json
+
+{
+  "userName": "kevin14",
+  "email": "kevinrugeles@gmail.com",
+  "role": ["TECNICO"],
+  "password": "1234567"
+}

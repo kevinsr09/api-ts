@@ -19,6 +19,10 @@ export class UserCustomErrors extends Error {
     return new UserCustomErrors(404, message)
   }
 
+  static duplicateRecord (message: string) {
+    return new UserCustomErrors(409, message)
+  }
+
   static internalError () {
     return new UserCustomErrors(500, 'Internal server error')
   }

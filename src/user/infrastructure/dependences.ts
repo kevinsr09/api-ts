@@ -1,6 +1,6 @@
 import { UserService } from '../application/user.services'
-import { UserController } from './user.controller'
-import { UserRepositoryMongoose } from './user.repository'
+import { UserController } from '../../presentation/user/user.controller'
+import { UserRepositoryMongoose } from './user.repository.mongodb'
 
 const userRepositoryMongoose = new UserRepositoryMongoose()
 const userServices = new UserService(userRepositoryMongoose)

@@ -24,6 +24,7 @@ enum ROLE {
   }
 })
 @pre<UserSchemaMongoose>('save', async function (next) {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (!this.isModified('password')) return next()
   if (this.password == null) return next()
 
