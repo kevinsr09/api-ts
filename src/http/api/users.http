@@ -15,8 +15,8 @@ POST  http://localhost:3001/api/v1/users
 Content-Type: application/json
 
 {
-  "userName": "kevin120",
-  "email": "kevinrugeles20@gmail.com",
+  "userName": "kevin121",
+  "email": "kevinrugeles21@gmail.com",
   "role": ["TECNICO"],
   "password": "12345623",
   "sql": "select * from users"
