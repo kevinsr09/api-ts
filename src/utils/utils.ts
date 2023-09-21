@@ -1,4 +1,4 @@
-import { Product } from '../types/types'
+import { Product } from '../types/user'
 
 export const resultModel = ({ message, success, data }: { message?: string, success: boolean, data?: Product }) => {
   if (!success) {
