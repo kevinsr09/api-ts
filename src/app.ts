@@ -11,7 +11,7 @@ import { Server } from './presentation/server'
   }
 })()
 
-async function main () {
+export async function main () {
   await mongoDatabase.connect(envs.MONGO_URI)
   void new Server({ port: envs.PORT, routes: AppRouter.routes }).run()
 }
