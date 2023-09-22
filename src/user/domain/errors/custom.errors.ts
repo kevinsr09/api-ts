@@ -19,6 +19,10 @@ export class UserCustomErrors extends Error {
     return new UserCustomErrors(404, message)
   }
 
+  static validationError () {
+
+  }
+
   static internalError () {
     return new UserCustomErrors(500, 'Internal server error')
   }

@@ -1,19 +1,14 @@
 import type { Request, Response, NextFunction } from 'express'
 
 import { UserService } from '../../user/application/user.services'
-import { UserValidator } from '../../config/user.data.validator'
 import { MongodbCustomErrors } from '../../data/mongodb/mongo.errors'
 
 export class UserController {
   constructor (private readonly userService: UserService) {}
 
   async addUser (req: Request, res: Response, _: NextFunction) {
-    const newUserData = UserValidator(req.body)
-
-    if (!newUserData.success) return res.status(400).json(newUserData.error.errors)
-
     try {
-      const newUser = await this.userService.addUser(newUserData.data)
+      const newUser = await this.userService.addUser(req.body)
 
       if (newUser == null) return res.status(400).json({ error: 'error' })
 

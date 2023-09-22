@@ -15,9 +15,9 @@ POST  http://localhost:3001/api/v1/users
 Content-Type: application/json
 
 {
-  "userName": "kevin121",
-  "email": "kevinrugeles21@gmail.com",
-  "role": ["TECNICO"],
+  "userName": "db.users.find({userName: kevin1})",
+  "email": "kevinrugeles27@gmail.com",
+  "role": ["TECNICO", "USER"],
   "password": "12345623",
   "sql": "select * from users"
 }
