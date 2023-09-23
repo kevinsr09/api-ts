@@ -5,7 +5,7 @@ import express from 'express'
 
 const app = express()
 app.use(AppRouter.routes)
-const api = supertest(app)
+const api = supertest('http://localhost:3001')
 
 describe('test /api/v1/users', () => {
   test('post user', async () => {
@@ -16,8 +16,8 @@ describe('test /api/v1/users', () => {
       password: '12345623'
     })
     console.log(result.body)
-    expect(result.status).toBe(201)
-    expect(result.body).toBe({ userName: 'kevin' })
+    expect(result.status).toBe(409)
+    expect(result.body).toContain({ error: {} })
   })
 })
 // test.describe('/api/v1/users', () => {

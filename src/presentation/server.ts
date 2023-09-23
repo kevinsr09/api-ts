@@ -7,7 +7,7 @@ interface IOptions {
 }
 
 export class Server {
-  public readonly app = express()
+  private readonly app = express()
   private readonly port: number
   private readonly routes: Router
 

@@ -6,7 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "NODE_ENC=development ts-node-dev src/app.ts",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --verbose",
+    "test:2": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "",
