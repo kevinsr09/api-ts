@@ -40,6 +40,12 @@ enum ROLE {
 export class UserSchemaMongoose {
   @prop({
     type: String,
+    required: true
+  })
+  public _id!: string
+
+  @prop({
+    type: String,
     required: true,
     unique: true
   })

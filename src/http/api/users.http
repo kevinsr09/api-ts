@@ -14,12 +14,13 @@ GET http://localhost:3001/api/v1/users/kevin
 GET  http://localhost:3001/api/v1/users
 
 ###
-POST  http://localhost:3001/api/v1/users
+POST  http://localhost:3001/api/v1/auth
 Content-Type: application/json
 
 {
-  "userName": "db.users.find({userName: kevin1})",
-  "email": "kevinrugeles27@gmail.com",
+  "id": "a70f3f99-a4c2-45a7-96db-9a9712dae4f8",
+  "userName": "kevinstivenr",
+  "email": "kevinrugeles28@gmail.com",
   "role": ["TECNICO", "USER"],
   "password": "12345623",
   "sql": "select * from users"

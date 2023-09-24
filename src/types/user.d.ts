@@ -1,3 +1,5 @@
+import { ZodIssue } from 'zod'
+import { User } from '../user/domain/user'
 import { POSITION_SWITCH } from '../utils/constants'
 
 export type BooleanString = 'true' | 'false'
@@ -34,3 +36,14 @@ export interface ProductSwitch extends Product {
   model: string[]
   modelYear: number[]
 }
+
+export interface UserResponse {
+  userName: Pick<User, 'userName'>
+  email: Pick<User, 'email'>
+  avatar: Pick<User, 'email'>
+  role: Pick<User, 'role'>
+}
+
+export type userResultDto =
+  | { success: false, error: ZodIssue[] }
+  | { success: true, user: RegisterUserDto }

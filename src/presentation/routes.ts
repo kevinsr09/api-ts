@@ -6,7 +6,7 @@ export class AppRouter {
   static get routes (): Router {
     const router = Router()
 
-    router.use('/api/v1/users', UserRouter.routes)
+    router.use('/api/v1/auth', UserRouter.routes)
     return router
   }
 }
