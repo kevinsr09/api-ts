@@ -6,6 +6,9 @@ Content-Type: application/json
   "email": "kevinrugeles25",
   "password": "12345" 
 }
+###
+GET http://localhost:3001/api/v1/users/kevin
+
 
 ###
 GET  http://localhost:3001/api/v1/users

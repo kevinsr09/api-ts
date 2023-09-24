@@ -8,6 +8,8 @@ export class UserRouter {
 
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     userRouter.post('/', ValidateData.validateData, userController.addUser.bind(userController))
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    userRouter.get('/:userName', userController.getUserByID.bind(userController))
 
     return userRouter
   }

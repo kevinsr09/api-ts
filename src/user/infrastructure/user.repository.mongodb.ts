@@ -7,6 +7,12 @@ import { MongoServerError } from 'mongodb'
 import { UserCustomErrors } from '../domain/errors/custom.errors'
 
 export class UserRepositoryMongoose implements IUserRepository {
+  async getUserById (userName: string): Promise<Omit<User, 'id' | 'password'> | null> {
+    const user = await UserModelMongoose.findOne({ userName })
+    if (user == null) return null
+    return user
+  }
+
   public async addUser (user: Omit<User, 'id' | 'createAt' | 'role'>): Promise<Omit<User, 'password' | 'id'>> {
     try {
       const newUser = await UserModelMongoose.create(user)

@@ -25,14 +25,14 @@ export class UserController {
     }
   }
 
-  // async getUserByID (req: Request, res: Response, _: NextFunction) {
-  //   const { userID } = req.params
-  //   console.log(userID)
-  //   if (typeof userID !== 'string') return res.status(400).json({ error: 'no ingresaste al usuario' })
-  //   const newUser = await this.userService.getUserByID(userID)
-  //   if (newUser == null) return res.status(400).json({ error: 'error' })
-  //   return res.json(newUser).end()
-  // }
+  async getUserByID (req: Request, res: Response, _: NextFunction) {
+    const { userName } = req.params
+    console.log(userName)
+    if (typeof userName !== 'string') return res.status(400).json({ error: 'no ingresaste al usuario' })
+    const newUser = await this.userService.getUserByID(userName)
+    if (newUser == null) return res.status(400).json({ error: 'error' })
+    return res.json(newUser).end()
+  }
 }
 
 // export const userRouter = Router()
