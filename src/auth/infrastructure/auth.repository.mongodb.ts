@@ -4,6 +4,7 @@ import { MongodbCustomErrors } from '../../data/mongodb/mongo.errors'
 import { MongoServerError } from 'mongodb'
 import { IAuthRepository } from '../domain/interfaces/auth.interface'
 import { User } from '../../user/domain/user'
+import { LoginUserDto } from '../domain/dtos/login.user.dto'
 
 export class AuthRepositoryMongoDB implements IAuthRepository {
   async registerUser (user: User): Promise<User> {
@@ -22,7 +23,19 @@ export class AuthRepositoryMongoDB implements IAuthRepository {
     }
   }
 
-  // const user = await UserModelMongoose.findOne({ userName })
-  // if (user == null) return null
-  // return user
+  async loginUser (loginUserDto: LoginUserDto): Promise<User | null> {
+    try {
+      const user = await UserModelMongoose.findOne({ email: loginUserDto.email })
+      if (user == null) return null
+
+      const result = await user.comparePassword(loginUserDto.password)
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (!result) return null
+
+      return await user.toJSON()
+    } catch (error) {
+      console.log(error)
+      return null
+    }
+  }
 }

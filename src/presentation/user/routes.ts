@@ -7,8 +7,13 @@ export class UserRouter {
     const userRouter = Router()
 
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    userRouter.post('/', authController.registerUser.bind(authController))
+    userRouter.post('/register', authController.registerUser.bind(authController))
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    userRouter.post('/login', authController.loginUser.bind(authController))
+
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    userRouter.post('/refresh', authController.refresh.bind(authController))
+
     // userRouter.get('/:userName', userController.getUserByID.bind(userController))
 
     return userRouter

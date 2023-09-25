@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { UserValidator } from '../../config/user.data.validator'
+import { UserValidator } from '../../helpers/auth.register.validator'
 
 export class ValidateData {
   static validateData (req: Request, res: Response, next: NextFunction) {

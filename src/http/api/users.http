@@ -14,14 +14,34 @@ GET http://localhost:3001/api/v1/users/kevin
 GET  http://localhost:3001/api/v1/users
 
 ###
-POST  http://localhost:3001/api/v1/auth
+POST  http://localhost:3001/api/v1/auth/register
 Content-Type: application/json
 
 {
-  "id": "a70f3f99-a4c2-45a7-96db-9a9712dae4f8",
-  "userName": "kevinstivenr",
-  "email": "kevinrugeles28@gmail.com",
+  "id": "462fbd7e-070c-47cd-9600-b0fce7f269b9",
+  "userName": "kevinsr09",
+  "email": "kevinrugelessr09@gmail.com",
   "role": ["TECNICO", "USER"],
   "password": "12345623",
   "sql": "select * from users"
+}
+
+###
+POST  http://localhost:3001/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "email": "kevinrugelessr09@gmail.com",
+  "password": "12345623"
+}
+
+
+###
+
+
+POST  http://localhost:3001/api/v1/auth/refresh
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtldmlucnVnZWxlc3NyMDlAZ21haWwuY29tIiwiaWF0IjoxNjk1NjA4ODg2LCJleHAiOjE2OTU2MDk3ODZ9.KuSfOs5YDPI7uw0VW4ssF_K45MFsSk7YBhiKIDLtIq8"
 }

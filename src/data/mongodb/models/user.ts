@@ -82,8 +82,8 @@ export class UserSchemaMongoose {
   public avatar?: string
 
   public async comparePassword (password: string): Promise<Boolean> {
+    if (typeof this.password !== 'string') return false
     if (password.length === 0) return false
-    if (this.password !== 'string') return false
     const result = await bcrypt.compare(password, this.password)
     return result
   }

@@ -1,11 +1,11 @@
-import { userValidator } from '../../../config/user.data.validator'
-import { userResultDto } from '../../../types/user'
+import { authRegisterValidator } from '../../../helpers/auth.register.validator'
+import { AuthRegisterUserDto } from '../../../types/user'
 
 export class RegisterUserDto {
   private constructor (public id: string, public userName: string, public email: string, public password: string, public avatar: string | null, public role: string[] = ['USER']) {}
 
-  static create (object: { [key: string]: any }): userResultDto {
-    const result = userValidator(object)
+  static create (object: { [key: string]: any }): AuthRegisterUserDto {
+    const result = authRegisterValidator(object)
 
     if (!result.success) return { success: false, error: result.error.errors }
 

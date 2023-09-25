@@ -3,6 +3,9 @@ import type { Request, Response, NextFunction } from 'express'
 import { MongodbCustomErrors } from '../../data/mongodb/mongo.errors'
 import { AuthService } from '../application/auth.services'
 import { RegisterUserDto } from '../domain/dtos/register.user.dto'
+import { LoginUserDto } from '../domain/dtos/login.user.dto'
+import jwt from 'jsonwebtoken'
+import { envs } from '../../config/envs'
 
 export class AuthController {
   constructor (private readonly authService: AuthService) {}
@@ -11,7 +14,7 @@ export class AuthController {
     try {
       const resultValidationData = RegisterUserDto.create(req.body)
 
-      if (!resultValidationData.success) return res.status(409).json({ error: resultValidationData.error })
+      if (!resultValidationData.success) return res.status(400).json({ error: resultValidationData.error })
       await this.authService.registerUser(resultValidationData.user)
 
       return res.status(201).json({ userName: resultValidationData.user.userName }).end()
@@ -25,6 +28,26 @@ export class AuthController {
         }
       })
     }
+  }
+
+  async loginUser (req: Request, res: Response, _: NextFunction) {
+    try {
+      const resultValidationData = LoginUserDto.create(req.body)
+      if (!resultValidationData.success) return res.status(400).json({ error: resultValidationData.error })
+      const user = await this.authService.loginUser(resultValidationData.user)
+      if (user == null) return res.status(400).json({ error: 'incorrect credentials' })
+      const token = jwt.sign({ email: user.email }, envs.JWT_SEED, { expiresIn: 60 * 15 })
+      return res.status(200).json({ success: true, token })
+    } catch (error) {
+      console.log(error)
+      return res.status(500).json({ error: 'internal error' })
+    }
+  }
+
+  async refresh (req: Request, _res: Response, _: NextFunction) {
+    const { token } = req.body
+    const result = jwt.verify(token, envs.JWT_SEED)
+    console.log(result)
   }
 }
 

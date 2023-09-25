@@ -1,6 +1,8 @@
 import { ZodIssue } from 'zod'
 import { User } from '../user/domain/user'
 import { POSITION_SWITCH } from '../utils/constants'
+import { LoginUserDto } from '../auth/domain/dtos/login.user.dto'
+import { RegisterUserDto } from '../auth/domain/dtos/register.user.dto'
 
 export type BooleanString = 'true' | 'false'
 
@@ -44,6 +46,10 @@ export interface UserResponse {
   role: Pick<User, 'role'>
 }
 
-export type userResultDto =
+export type AuthRegisterUserDto =
   | { success: false, error: ZodIssue[] }
   | { success: true, user: RegisterUserDto }
+
+export type AuthLoginUserDto =
+  | { success: false, error: ZodIssue[] }
+  | { success: true, user: LoginUserDto }
